@@ -31,3 +31,17 @@ train_test_split
 # Retrieve train and test sets
 train_tbl <- training(train_test_split)
 test_tbl <- testing(train_test_split)
+
+# Determine if log transformation improves correlation
+# between TotalCharges and Churn
+train_tbl %>%
+  select(Churn, TotalCharges) %>%
+  mutate(
+    Churn = Churn %>% as.factor() %>% as.numeric(),
+    LogTotalCharges = log(TotalCharges)
+  ) %>%
+  correlate() %>%
+  focus(Churn) %>%
+  fashion()
+  
+
