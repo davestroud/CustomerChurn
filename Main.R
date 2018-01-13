@@ -18,7 +18,7 @@ glimpse(churn_data_raw)
 churn_data_tbl <- churn_data_raw %>%
   select(-customerID) %>% # Remove Customer ID
   drop_na() %>% # drop NA observations
-  select(Churn, everything()) # Remove all of Churn variable
+  select(Churn, everything()) # Set target in the first column
 
 # View observations and variables
 glimpse(churn_data_tbl)
@@ -28,3 +28,6 @@ set.seed(100)
 train_test_split <- initial_split(churn_data_tbl, prop = 0.8)
 train_test_split
         
+# Retrieve train and test sets
+train_tbl <- training(train_test_split)
+test_tbl <- testing(train_test_split)
