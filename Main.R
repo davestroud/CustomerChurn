@@ -1,5 +1,5 @@
 # Load libraries
-# David Stroud
+
 library(keras)
 library(lime)
 library(tidyquant)
@@ -44,4 +44,11 @@ train_tbl %>%
   focus(Churn) %>%
   fashion()
   
-
+# Create recipe
+rec_obj <- recipe(Churn ~ ., data = train_tbl) %>%
+  step_discretize(tenure, options = list(cuts = 6)) %>%
+  step_log(TotalCharges) %>%
+  step_dummy(all_nominal(), -all_outcomes()) %>%
+  step_center(all_predictors(), -all_outcomes()) %>%
+  step_scale(all_predictors(), -all_outcomes()) %>%
+  prep(data = train_tbl)
