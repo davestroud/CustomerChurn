@@ -116,6 +116,7 @@ history <- fit(
   validation_split = 0.30
 )
 
-
+# Print a summary of the training history
+print(history)
 
 
