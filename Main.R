@@ -199,3 +199,9 @@ explanation <- lime::explain(
 plot_features(explanation) +
   labs(title = "LIME Feature Importance Visualization",
        subtitle = "Hold Out (Test) Set, First 10 Cases Shown")
+
+plot_explanations(explanation) +
+  labs(title = "LIME Feature Importance Heatmap",
+       subtitle = "Hold Out (Test) Set, First 10 Cases Shown")
+
+
