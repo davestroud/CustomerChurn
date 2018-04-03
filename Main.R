@@ -65,3 +65,44 @@ glimpse(x_train_tbl)
 # Response variables for training and testing sets
 y_train_vec <- ifelse(pull(train_tbl, Churn) == "Yes", 1, 0)
 y_test_vec  <- ifelse(pull(test_tbl, Churn) == "Yes", 1, 0)
+
+
+# Building our Artificial Neural Network
+model_keras <- keras_model_sequential()
+
+model_keras %>% 
+  
+  # First hidden layer
+  layer_dense(
+    units              = 16, 
+    kernel_initializer = "uniform", 
+    activation         = "relu", 
+    input_shape        = ncol(x_train_tbl)) %>% 
+  
+  # Dropout to prevent overfitting
+  layer_dropout(rate = 0.1) %>%
+  
+  # Second hidden layer
+  layer_dense(
+    units              = 16, 
+    kernel_initializer = "uniform", 
+    activation         = "relu") %>% 
+  
+  # Dropout to prevent overfitting
+  layer_dropout(rate = 0.1) %>%
+  
+  # Output layer
+  layer_dense(
+    units              = 1, 
+    kernel_initializer = "uniform", 
+    activation         = "sigmoid") %>% 
+  
+  # Compile ANN
+  compile(
+    optimizer = 'adam',
+    loss      = 'binary_crossentropy',
+    metrics   = c('accuracy')
+  )
+
+keras_model
+
