@@ -187,3 +187,11 @@ explainer <- lime::lime(
   bin_continuous = FALSE
 )
 
+# Run explain() on explainer
+explanation <- lime::explain(
+  x_test_tbl[1:10, ], 
+  explainer    = explainer, 
+  n_labels     = 1, 
+  n_features   = 4,
+  kernel_width = 0.5
+)
