@@ -123,7 +123,13 @@ print(history)
 plot(history)
 
 
+# Predicted Class
+yhat_keras_class_vec <- predict_classes(object = model_keras, x = as.matrix(x_test_tbl)) %>%
+  as.vector()
 
+# Predicted Class Probability
+yhat_keras_prob_vec  <- predict_proba(object = model_keras, x = as.matrix(x_test_tbl)) %>%
+  as.vector()
 
 
 
