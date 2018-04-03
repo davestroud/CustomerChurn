@@ -140,8 +140,9 @@ estimates_keras_tbl <- tibble(
 
 estimates_keras_tbl
 
+options(yardstick.event_first = FALSE)
 
-
-
+# Confusion Table
+estimates_keras_tbl %>% conf_mat(truth, estimate)
 
 
