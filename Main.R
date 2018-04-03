@@ -162,3 +162,12 @@ tibble(
 estimates_keras_tbl %>% f_meas(truth, estimate, beta = 1)
 
 
+class(model_keras)
+
+# Setup lime::model_type() function for keras
+model_type.keras.models.Sequential <- function(x, ...) {
+  "classification"
+}
+
+
+
