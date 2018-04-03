@@ -62,4 +62,6 @@ x_test_tbl  <- bake(rec_obj, newdata = test_tbl) %>% select(-Churn)
 
 glimpse(x_train_tbl)
 
-
+# Response variables for training and testing sets
+y_train_vec <- ifelse(pull(train_tbl, Churn) == "Yes", 1, 0)
+y_test_vec  <- ifelse(pull(test_tbl, Churn) == "Yes", 1, 0)
