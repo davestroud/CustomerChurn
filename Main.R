@@ -158,6 +158,7 @@ tibble(
   recall    = estimates_keras_tbl %>% recall(truth, estimate)
 )
 
-
+# F1-Statistic
+estimates_keras_tbl %>% f_meas(truth, estimate, beta = 1)
 
 
