@@ -119,4 +119,11 @@ history <- fit(
 # Print a summary of the training history
 print(history)
 
+# Plot the training/validation history of our Keras model
+plot(history)
+
+
+
+
+
 
