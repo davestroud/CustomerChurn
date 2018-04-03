@@ -106,3 +106,16 @@ model_keras %>%
 
 keras_model
 
+# Fit the keras model to the training data
+history <- fit(
+  object           = model_keras, 
+  x                = as.matrix(x_train_tbl), 
+  y                = y_train_vec,
+  batch_size       = 50, 
+  epochs           = 35,
+  validation_split = 0.30
+)
+
+
+
+
