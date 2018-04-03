@@ -131,5 +131,17 @@ yhat_keras_class_vec <- predict_classes(object = model_keras, x = as.matrix(x_te
 yhat_keras_prob_vec  <- predict_proba(object = model_keras, x = as.matrix(x_test_tbl)) %>%
   as.vector()
 
+# Format test data and predictions for yardstick metrics
+estimates_keras_tbl <- tibble(
+  truth      = as.factor(y_test_vec) %>% fct_recode(yes = "1", no = "0"),
+  estimate   = as.factor(yhat_keras_class_vec) %>% fct_recode(yes = "1", no = "0"),
+  class_prob = yhat_keras_prob_vec
+)
+
+estimates_keras_tbl
+
+
+
+
 
 
