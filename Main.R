@@ -146,3 +146,18 @@ options(yardstick.event_first = FALSE)
 estimates_keras_tbl %>% conf_mat(truth, estimate)
 
 
+# Accuracy
+estimates_keras_tbl %>% metrics(truth, estimate)
+
+# AUC
+estimates_keras_tbl %>% roc_auc(truth, class_prob)
+
+# Precision
+tibble(
+  precision = estimates_keras_tbl %>% precision(truth, estimate),
+  recall    = estimates_keras_tbl %>% recall(truth, estimate)
+)
+
+
+
+
