@@ -204,4 +204,14 @@ plot_explanations(explanation) +
   labs(title = "LIME Feature Importance Heatmap",
        subtitle = "Hold Out (Test) Set, First 10 Cases Shown")
 
+# Feature correlations to Churn
+corrr_analysis <- x_train_tbl %>%
+  mutate(Churn = y_train_vec) %>%
+  correlate() %>%
+  focus(Churn) %>%
+  rename(feature = rowname) %>%
+  arrange(abs(Churn)) %>%
+  mutate(feature = as_factor(feature)) 
+corrr_analysis
+
 
