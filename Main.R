@@ -179,3 +179,11 @@ predict_model.keras.models.Sequential <- function(x, newdata, type, ...) {
 # Test our predict_model() function
 predict_model(x = model_keras, newdata = x_test_tbl, type = 'raw') %>%
   tibble::as_tibble()
+
+# Run lime() on training set
+explainer <- lime::lime(
+  x              = x_train_tbl, 
+  model          = model_keras, 
+  bin_continuous = FALSE
+)
+
