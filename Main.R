@@ -1,6 +1,5 @@
 # Load libraries
 # David Stroud
-library(readr)
 library(keras)
 library(lime)
 library(tidyquant)
