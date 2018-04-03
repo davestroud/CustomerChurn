@@ -195,3 +195,7 @@ explanation <- lime::explain(
   n_features   = 4,
   kernel_width = 0.5
 )
+
+plot_features(explanation) +
+  labs(title = "LIME Feature Importance Visualization",
+       subtitle = "Hold Out (Test) Set, First 10 Cases Shown")
