@@ -52,3 +52,14 @@ rec_obj <- recipe(Churn ~ ., data = train_tbl) %>%
   step_center(all_predictors(), -all_outcomes()) %>%
   step_scale(all_predictors(), -all_outcomes()) %>%
   prep(data = train_tbl)
+
+# Print the recipe object
+rec_obj
+
+# Predictors
+x_train_tbl <- bake(rec_obj, newdata = train_tbl) %>% select(-Churn)
+x_test_tbl  <- bake(rec_obj, newdata = test_tbl) %>% select(-Churn)
+
+glimpse(x_train_tbl)
+
+
